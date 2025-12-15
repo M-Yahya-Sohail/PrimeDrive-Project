@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard - Car Rental</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="bi bi-car-front-fill me-2"></i>PrimeDrive
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cars.html">Cars</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bookings.html">My Bookings</a></li>
+                    <li class="nav-item" id="navAdmin"><a class="nav-link" href="admin.html">Admin Panel</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="customer-dashboard.html">Dashboard</a></li>
+                    <li class="nav-item" id="navLogin"><a class="nav-link" href="login.html">Login</a></li>
+                    <li class="nav-item" id="navRegister"><a class="nav-link" href="register.html">Register</a></li>
+                    <li class="nav-item dropdown" id="navNotifications" style="display: none;">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-bell me-1"></i><span class="badge bg-danger rounded-pill" id="notifBadge" style="font-size: 0.6rem;">3</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end notification-menu">
+                            <li class="dropdown-header">Notifications</li>
+                            <li><span class="dropdown-item small">Welcome to PrimeDrive! Start by browsing cars.</span></li>
+                            <li><span class="dropdown-item small">Your recent booking status will appear here.</span></li>
+                            <li><span class="dropdown-item small text-muted">New cars and offers coming soon.</span></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown" id="navUser" style="display: none;">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle me-1"></i><span id="userNameNav"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="logoutBtn">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div id="globalAlertContainer" class="mt-2"></div>
+        <!-- Welcome Section -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card text-white" style="background-color: #8b5cf6;">
+                    <div class="card-body p-4">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h2 class="mb-2" id="welcomeMessage">Welcome!</h2>
+                                <p class="mb-0">Manage your car rentals and bookings from your dashboard</p>
+                            </div>
+                            <div class="col-md-4 text-md-end">
+                                <a href="cars.html" class="btn btn-light btn-lg">
+                                    <i class="bi bi-search me-2"></i>Browse Cars
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-4">
+                <div class="dashboard-card text-center">
+                    <div class="card-icon text-primary">
+                        <i class="bi bi-calendar-check"></i>
+                    </div>
+                    <div class="card-value" id="totalBookings">0</div>
+                    <div class="card-label">Total Bookings</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="dashboard-card text-center">
+                    <div class="card-icon text-success">
+                        <i class="bi bi-check-circle"></i>
+                    </div>
+                    <div class="card-value" id="activeBookings">0</div>
+                    <div class="card-label">Active Bookings</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="dashboard-card text-center">
+                    <div class="card-icon text-info">
+                        <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div class="card-value" id="totalSpent">$0</div>
+                    <div class="card-label">Total Spent</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h4 class="mb-3">Quick Actions</h4>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card h-100 text-center p-4 action-card">
+                    <i class="bi bi-search" style="font-size: 3rem; color: var(--primary-color);"></i>
+                    <h5 class="mt-3">View Available Cars</h5>
+                    <p class="text-muted">Browse and search for available cars</p>
+                    <a href="cars.html" class="btn btn-primary">View Cars</a>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card h-100 text-center p-4 action-card">
+                    <i class="bi bi-calendar-check" style="font-size: 3rem; color: var(--success-color);"></i>
+                    <h5 class="mt-3">My Bookings</h5>
+                    <p class="text-muted">View and manage your bookings</p>
+                    <a href="bookings.html" class="btn btn-success">View Bookings</a>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card h-100 text-center p-4 action-card">
+                    <i class="bi bi-person" style="font-size: 3rem; color: var(--info-color);"></i>
+                    <h5 class="mt-3">Edit Profile</h5>
+                    <p class="text-muted">Update your personal information</p>
+                    <a href="profile.html" class="btn btn-info text-white">Edit Profile</a>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card h-100 text-center p-4 action-card">
+                    <i class="bi bi-car-front" style="font-size: 3rem; color: var(--warning-color);"></i>
+                    <h5 class="mt-3">Search & Filter</h5>
+                    <p class="text-muted">Find cars by brand, type, or price</p>
+                    <a href="cars.html" class="btn btn-warning">Search Cars</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Bookings -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-clock-history me-2"></i>Recent Bookings</h5>
+                        <a href="bookings.html" class="btn btn-sm btn-outline-primary">View All</a>
+                    </div>
+                    <div class="card-body">
+                        <div id="recentBookingsContainer">
+                            <div class="spinner-container">
+                                <div class="spinner-border text-primary" role="status"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/customer-dashboard.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,26 @@
+{
+  "name": "car-rental-management-system",
+  "version": "1.0.0",
+  "description": "Car Rental Management System - Full Stack Web Application",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npx http-server -p 3000",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "keywords": [
+    "car-rental",
+    "management-system"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
+}
+
+
