@@ -46,7 +46,10 @@ const apiRequest = async (endpoint, options = {}) => {
     //   headers,
     // });
 
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, { /* ... */ });
+    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+      ...options,
+      headers,
+    });
 
     // Check if response is JSON
     const contentType = response.headers.get("content-type");
