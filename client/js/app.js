@@ -29,29 +29,6 @@ const setCurrentUser = (user) => {
 };
 
 // API Request Helper
-// const apiRequest = async (endpoint, options = {}) => {
-//   const token = getAuthToken();
-//   const headers = {
-//     "Content-Type": "application/json",
-//     ...options.headers,
-//   };
-
-//   if (token) {
-//     headers["Authorization"] = `Bearer ${token}`;
-//   }
-
-//   try {
-//     // const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-//     //   ...options,
-//     //   headers,
-//     // });
-
-//     const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-//       ...options,
-//       headers,
-//     });
-
-// API Request Helper (Corrected to handle slashes)
 const apiRequest = async (endpoint, options = {}) => {
   const token = getAuthToken();
   const headers = {
@@ -64,13 +41,7 @@ const apiRequest = async (endpoint, options = {}) => {
   }
 
   try {
-    // ZAROORI: Endpoint se leading slash remove kar dein agar hai toh
-    const cleanEndpoint = endpoint.startsWith("/")
-      ? endpoint.slice(1)
-      : endpoint;
-
-    // Ab API_BASE_URL (jismein aakhir mein / nahi hai) ke saath clean endpoint jorein
-    const response = await fetch(`${API_BASE_URL}/${cleanEndpoint}`, {
+    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
       ...options,
       headers,
     });
