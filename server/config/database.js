@@ -5,19 +5,20 @@ require("dotenv").config();
 let pool = null;
 
 // Create MySQL connection pool
-const createPool = () => {
-  return mysql.createPool({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    port: process.env.DB_PORT,
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0,
-    charset: "utf8mb4",
-  });
-};
+const createPool = () => mysql.createPool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT || 3306,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+  charset: 'utf8mb4',
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
 const init = async () => {
   try {
