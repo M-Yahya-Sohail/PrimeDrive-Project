@@ -27,7 +27,7 @@ const init = async () => {
 
     // Test connection
     const connection = await pool.getConnection();
-    console.log("Connected to MySQL database: ${process.env.DB_NAME}");
+    console.log(`Connected to MySQL database: ${process.env.DB_NAME}`);
     connection.release();
 
     // Create default admin if not exists
