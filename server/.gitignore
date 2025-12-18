@@ -3,8 +3,4 @@ node_modules/
 data/
 uploads/
 *.log
-
-
-
-
-
+MYSQL_DATABASE.txt
