@@ -99,7 +99,7 @@ function displayCars(cars) {
         <div class="car-card fade-in">
             <div class="car-image ${car.image_url ? 'has-photo' : 'no-photo'}">
                 ${car.image_url 
-                    ? `<img src="${car.image_url}" alt="${car.car_make || car.brand || ''} ${car.car_model || car.model || ''}" onerror="this.parentElement.innerHTML='<i class=\\"bi bi-car-front\\"></i>'">`
+                    ? `<img src="${car.image_url}" alt="${car.car_make || car.brand || ''} ${car.car_model || car.model || ''}" onerror="this.parentElement.innerHTML='<i class=\\"bi bi-car-front\\"></i>`
                     : `<i class="bi bi-car-front"></i>`
                 }
             </div>
