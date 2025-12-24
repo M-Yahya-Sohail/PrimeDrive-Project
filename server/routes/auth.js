@@ -12,7 +12,8 @@ router.post('/register', [
   body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters'),
   body('phone').optional().trim(),
   body('address').optional().trim(),
-  body('role').optional().isIn(['customer', 'admin']).withMessage('Role must be either customer or admin')
+  body('role').optional().isIn(['customer', 'admin']).withMessage('Role must be either customer or admin'),
+  body('adminKey').optional().trim()
 ], async (req, res) => {
   try {
     const errors = validationResult(req);
@@ -20,8 +21,15 @@ router.post('/register', [
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password, phone, address, role } = req.body;
+    const { name, email, password, phone, address, role, adminKey } = req.body;
     const userRole = role || 'customer'; // Default to customer if not provided
+
+    if (userRole === 'admin') {
+      const MASTER_KEY = process.env.ADMIN_SECRET_KEY;
+      if (adminKey !== MASTER_KEY) {
+        return res.status(403).json({ message: 'Access Denied: Invalid Administrator Verification Key.' });
+      }
+    }
 
     // Check if user exists
     db.get('SELECT * FROM users WHERE email = ?', [email], async (err, user) => {
