@@ -40,11 +40,9 @@ A comprehensive full-stack web application for managing car rentals with separat
 - MySQL Database
 - JWT Authentication
 - bcrypt Password Hashing
-- Email Notifications (Nodemailer)
 
 ### Database
 - MySQL (Normalized Schema)
-- Support for AwardSpace Free Hosting
 
 ## 📁 Project Structure
 
@@ -100,7 +98,6 @@ PROJECT CODING/
 ### Prerequisites
 - Node.js (v14 or higher)
 - MySQL (v5.7 or higher)
-- npm or yarn
 
 ### Step 1: Clone/Download Project
 
@@ -344,7 +341,7 @@ Car Rental Management System - PrimeDrive
 - Bootstrap 5
 - MySQL
 - Node.js Community
-- AwardSpace for free hosting
+- Railway for free hosting
 
 ---
 
