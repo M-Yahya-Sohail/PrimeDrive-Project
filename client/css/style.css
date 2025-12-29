@@ -1194,6 +1194,8 @@ body {
     border-color: var(--border-color);
 }
 
+
+
 .input-group .form-control:focus + .btn {
     border-color: var(--primary-color);
 }
@@ -1260,10 +1262,14 @@ footer p {
     color: rgba(255, 255, 255, 0.7);
 }
 
+
+
+
 /* Section Spacing */
 section {
     padding: 4rem 0;
 }
+
 
 /* Container Improvements */
 .container {
